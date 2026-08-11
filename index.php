@@ -2,16 +2,25 @@
 
 <?php
 //Arquivo index responsável pela inicialização do sistema
-require_once 'sistema/configuracao.php';
-include_once './sistema/Nucleo/helpers.php';
-include './sistema/Nucleo/Mensagem.php';
-include './sistema/Nucleo/Controlador.php';
+//require_once 'sistema/configuracao.php';
+//include_once './sistema/Nucleo/helpers.php';
+//include './sistema/Nucleo/Mensagem.php';
+//include './sistema/Nucleo/Controlador.php';
+require 'vendor/autoload.php';
 
-use sistema\Nucleo\Controlador;
+require 'rotas.php';
 
-$controlador = new Controlador();
-echo '<hr>';
-var_dump($controlador);
+
+
+
+
+
+
+//use sistema\Nucleo\Controlador;
+//
+//$controlador = new Controlador();
+//echo '<hr>';
+//var_dump($controlador);
 
 
 

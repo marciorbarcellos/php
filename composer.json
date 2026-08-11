@@ -1,0 +1,27 @@
+{
+    "name": "php/cursophp8",
+    "description": "Curso de PHP 8",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "sistema\\": "sistema/"
+        },
+        "files": [
+            "sistema/configuracao.php"
+        ]
+    },
+    "authors": [
+        {
+            "name": "Marcio Barcellos",
+            "email": "marcio.barcellos@outlook.com",
+            "homepage": "https://seld.be",
+            "role": "Developer"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+		"php": ">=8.2",
+        "pecee/simple-router": "dev-master",
+        "twig/twig": "^3.0"
+	}
+}

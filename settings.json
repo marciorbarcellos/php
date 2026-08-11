@@ -4,11 +4,11 @@
     "files.autoSave": "afterDelay",
     "workbench.startupEditor": "none",
     "phpserver.browser": "chrome",
-    "phpserver.phpConfigPath": "C:\\xampp\\php\\php.ini",
-    "phpserver.phpPath": "C:\\xampp\\php\\php.exe",
+    "phpserver.phpConfigPath": "C:\\xampp82\\php\\php.ini",
+    "phpserver.phpPath": "C:\\xampp82\\php\\php.exe",
     "editor.wordWrap": "on",
     "[php]": {
         "editor.defaultFormatter": "bmewburn.vscode-intelephense-client"
     },
-    "php.validate.executablePath": "C:/xampp/php/php.exe"
+    "php.validate.executablePath": "C:/xampp82/php/php.exe"
 }

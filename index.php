@@ -10,12 +10,6 @@ require 'vendor/autoload.php';
 
 require 'rotas.php';
 
-
-
-
-
-
-
 //use sistema\Nucleo\Controlador;
 //
 //$controlador = new Controlador();

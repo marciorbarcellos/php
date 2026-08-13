@@ -2,8 +2,18 @@
 
 namespace sistema\Nucleo;
 
+use exception;
+
 class Helpers
 {
+
+public static function redirecionar(string $url = null): void
+{
+    header('HTTP/1.1 302 Found');
+    $local = ($url ? self::url($url) : self::url());
+    header("Location: {$local} ");
+    exit();
+}
 
 /**
  * Valida CPF Válido ou Inválido
@@ -15,7 +25,7 @@ public static function validarCpf(string $cpf): bool
     $cpf = self::limparNumero($cpf);
     
     if(mb_strlen($cpf) != 11 or preg_match('/(\d)\1{10}/',$cpf)){
-        return false;
+        throw new exception('CPF inválido');
     }
 for ($t = 9; $t < 11; $t++) {
     for ($d = 0, $c = 0; $c < $t; $c++) {
@@ -23,7 +33,7 @@ for ($t = 9; $t < 11; $t++) {
     }
     $d = ((10 * $d) % 11) % 10;
     if ($cpf[$c] != $d) {
-        return false;
+        throw new exception('CPF inválido');
     }
     return true;
 }
@@ -89,7 +99,7 @@ return $dataFormatada;
  * @param string $url
  * @return string
  */
-public static function url(string $url): string
+public static function url(string $url = null): string
 {
 $servidor = filter_input(INPUT_SERVER, 'SERVER_NAME');
 $ambiente = ($servidor == 'localhost' ? URL_DESENVOLVIMENTO : URL_PRODUCAO);
@@ -109,7 +119,7 @@ public static function localhost(): bool
 {
 $servidor = filter_input(INPUT_SERVER, 'SERVER_NAME');
 
-if(!$servidor == 'localhost'){
+if($servidor == 'localhost'){
 return true;
 }
 return false;

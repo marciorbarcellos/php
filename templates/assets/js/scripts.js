@@ -1,2 +1,2 @@
-alerta('olá');
+alert('olá');
 

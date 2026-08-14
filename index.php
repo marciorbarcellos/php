@@ -10,6 +10,34 @@ require 'vendor/autoload.php';
 
 require 'rotas.php';
 
+
+
+
+
+
+
+//use sistema\Modelo\PostModelo;
+//
+//$posts = (new PostModelo())->ler();
+//
+//foreach ($posts as $posts) {
+//    echo $posts->titulo.'<br>';
+//}
+
+
+
+
+
+
+//use sistema\Nucleo\Conexao;
+//
+//$con = Conexao::getInstancia();
+
+
+
+
+
+
 //use sistema\Nucleo\Controlador;
 //
 //$controlador = new Controlador();

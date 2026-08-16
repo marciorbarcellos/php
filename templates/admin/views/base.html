@@ -1,28 +1,22 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>
-            {% if titulo %}
-            {{titulo}}
-            {% else %}
-            {{ constant('SITE_NOME') }}
-            {% endif %}
-        </title>
+        <title>Painel Administtivo</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="{{ url('templates/assets/vendor/bootstrap/css/bootstrap.min.css') }}">
         <link rel="stylesheet" href="{{ url('templates/assets/css/estilos.css') }}">
-        <link rel="stylesheet" href="{{ url('templates/site/assets/css/site.css') }}">
+        <link rel="stylesheet" href="{{ url('templates/admin/assets/css/admin.css') }}">
     </head>
     <body>
-        {% include 'topo.html' %}
-        {% block conteudo %} {% endblock %}
-        {% include 'rodape.html' %}
+        <div class="container-fluid">
+            {% block corpo %} {% endblock %}
+        </div>
 
         <script src="{{ url('templates/assets/vendor/jquery/jquery.min.js') }}"></script>
 
         <script src="{{ url('templates/assets/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
         <script src="{{ url('templates/assets/js/scripts.js') }}?v={{ 'now'|date('YmdHis') }}"></script><!-- comment -->
-        <script src="{{ url('templates/site/assets/js/site.js') }}"></script><!-- comment -->
+        <script src="{{ url('templates/admin/assets/js/admin.js') }}"></script><!-- comment -->
     </body>
 </html>

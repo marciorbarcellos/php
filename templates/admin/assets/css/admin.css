@@ -1,0 +1,5 @@
+.menu-logo {
+    height: calc(1rem - 5pt);
+    width: auto;
+    background-color: var(--bs-dark);
+}

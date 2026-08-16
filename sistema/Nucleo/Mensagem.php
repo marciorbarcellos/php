@@ -9,8 +9,8 @@ namespace sistema\Nucleo;
  */
 class Mensagem
 {
-    private $texto;
-    private $css;
+    private ?string $texto = null;
+    private ?string $css = null;
     
     public function __toString()
     {

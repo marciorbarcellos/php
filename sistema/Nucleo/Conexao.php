@@ -12,7 +12,7 @@ use PDOException;
  */
 class Conexao {
 
-    private static $instancia;
+    private static ?PDO $instancia = null;
 
     public static function getInstancia(): PDO {
         if (empty(self::$instancia)) {

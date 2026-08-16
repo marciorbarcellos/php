@@ -13,7 +13,7 @@ class CategoriaModelo {
 
     public function busca(): array
     {
-        $query = "SELECT * FROM categorias WHERE status = 1 ORDER BY nome ASC ";
+        $query = "SELECT * FROM categorias ORDER BY titulo ASC ";
         $stmt = Conexao::getInstancia()->query($query);
         $resultado = $stmt->fetchAll();
         return $resultado;

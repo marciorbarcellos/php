@@ -27,5 +27,26 @@ class CategoriaModelo {
         return $resultado;
     }
 
-}
+    public function post(int $id): array
+    {
+        $query = "SELECT * FROM posts WHERE categoria_id = {$id} AND status = 1 ORDER BY id DESC";
+        $stmt = Conexao::getInstancia()->query($query);
+        $resultado = $stmt->fetchAll();
+        return $resultado;
+    }
+    
+        public function cadastrar(array $dados): bool
+    {
+        $query = "INSERT INTO categorias (titulo, status) VALUES (:titulo, :status)";
+        $stmt = Conexao::getInstancia()->prepare($query);
+        $stmt->bindValue(':titulo', $dados['titulo']);
+        $stmt->bindValue(':status', $dados['status']);
+        return $stmt->execute();
+    }
+    
+    public function armazenar(array $dados):void
+    {
+        $query = "INSERT INTO `categorias` (`id`, `titulo`, `texto`, `status`) VALUES (NULL, 'teste', 'teste', '0');";
+    }
 
+}

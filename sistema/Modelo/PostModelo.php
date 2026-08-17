@@ -29,6 +29,17 @@ class PostModelo {
         return $resultado;
     }
 
+    public function cadastrar(array $dados): bool
+    {
+        $query = "INSERT INTO posts (categoria_id, titulo, texto, status) VALUES (:categoria_id, :titulo, :texto, :status)";
+        $stmt = Conexao::getInstancia()->prepare($query);
+        $stmt->bindValue(':categoria_id', $dados['categoria_id']);
+        $stmt->bindValue(':titulo', $dados['titulo']);
+        $stmt->bindValue(':texto', $dados['texto']);
+        $stmt->bindValue(':status', $dados['status']);
+        return $stmt->execute();
+    }
+
     public function pesquisa(string $busca): array
     {
         $query = "SELECT * FROM posts WHERE titulo LIKE :busca1 OR texto LIKE :busca2 ORDER BY id DESC ";

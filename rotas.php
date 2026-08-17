@@ -1,4 +1,5 @@
 <?php
+
 //rotas
 use Pecee\SimpleRouter\SimpleRouter;
 use sistema\Nucleo\Helpers;
@@ -14,7 +15,13 @@ try {
     SimpleRouter::get(URL_SITE . '404', 'SiteControlador@erro404');
 
     SimpleRouter::group(['namespace' => 'Admin'], function () {
-        SimpleRouter::get(URL_ADMIN.'dashboard', 'AdminDashboard@dashboard');
+        SimpleRouter::get(URL_ADMIN . 'dashboard', 'AdminDashboard@dashboard');
+        // ADMIN POSTS
+        SimpleRouter::get(URL_ADMIN . 'posts/listar', 'AdminPosts@listar');
+        SimpleRouter::match(['get', 'post'], URL_ADMIN.'posts/cadastrar','AdminPosts@cadastrar');
+        // ADMIN CATEGORIAS
+        SimpleRouter::get(URL_ADMIN . 'categorias/listar', 'AdminCategorias@listar');
+        SimpleRouter::match(['get', 'post'], URL_ADMIN.'categorias/cadastrar','AdminCategorias@cadastrar');
     });
 
     SimpleRouter::start();

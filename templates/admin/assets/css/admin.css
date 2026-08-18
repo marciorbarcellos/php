@@ -3,3 +3,140 @@
     width: auto;
     background-color: var(--bs-dark);
 }
+
+/* ---------- layout base ---------- */
+body {
+    background-color: #f4f6f9;
+}
+
+#menu {
+    display: none;
+}
+
+/* ---------- sidebar ---------- */
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 260px;
+    height: 100vh;
+    background-color: #2d3653;
+    overflow-y: auto;
+    transition: margin-left .2s ease;
+    z-index: 1030;
+}
+
+.sidebarLogo {
+    padding: 1.5rem 1rem;
+    text-align: center;
+    border-bottom: 1px solid rgba(255, 255, 255, .1);
+}
+
+.sidebarLogo .logo img {
+    height: 2rem;
+    width: auto;
+}
+
+.sidebarMenu ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.sidebarTitulo {
+    padding: 1.25rem 1.5rem .5rem;
+    font-size: .75rem;
+    text-transform: uppercase;
+    letter-spacing: .05em;
+    color: rgba(255, 255, 255, .5);
+}
+
+.sidebarMenu li a {
+    display: flex;
+    align-items: center;
+    gap: .75rem;
+    padding: .65rem 1.5rem;
+    color: rgba(255, 255, 255, .85);
+    text-decoration: none;
+}
+
+.sidebarMenu li a:hover {
+    background-color: rgba(255, 255, 255, .08);
+    color: #fff;
+}
+
+.sidebarMenu li a i {
+    width: 1.1rem;
+    text-align: center;
+}
+
+/* ---------- conteúdo ---------- */
+.conteudo {
+    margin-left: 260px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    transition: margin-left .2s ease;
+}
+
+.conteudo main {
+    flex: 1;
+    padding: 1.5rem;
+}
+
+/* ---------- topbar ---------- */
+.topbar {
+    background-color: #fff;
+    padding: .85rem 1.5rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, .08);
+}
+
+.menu-toggle {
+    cursor: pointer;
+    font-size: 1.25rem;
+    color: #495057;
+}
+
+.user-dropdown {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    color: #212529;
+    font-weight: 500;
+}
+
+.user-dropdown i {
+    font-size: 1.4rem;
+    color: #6c757d;
+}
+
+/* ---------- toggle do menu (checkbox) ---------- */
+#menu:checked ~ .sidebar {
+    margin-left: -260px;
+}
+
+#menu:checked ~ .conteudo {
+    margin-left: 0;
+}
+
+/* ---------- status (bolinha) ---------- */
+.status-dot {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+}
+
+.status-ativo {
+    background-color: #28a745;
+}
+
+.status-inativo {
+    background-color: #dc3545;
+}
+
+/* ---------- rodapé admin ---------- */
+.admin-rodape {
+    padding: 1rem 1.5rem;
+    border-top: 1px solid #e9ecef;
+}

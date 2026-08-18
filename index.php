@@ -6,8 +6,11 @@
 //include './sistema/Nucleo/Controlador.php';
 require 'vendor/autoload.php';
 
-require 'rotas.php';
+//require 'rotas.php';
 
+$session = new \sistema\Nucleo\Sessao();
+
+$sessao->criar('usuario', ['id' => 10, 'nome' => 'Marcio Barcellos']);
 
 
 

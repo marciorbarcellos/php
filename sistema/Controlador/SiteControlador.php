@@ -61,7 +61,7 @@ class SiteControlador extends Controlador
 
     public function categorias()
     {
-        return (new CategoriaModelo())->busca();
+        return (new CategoriaModelo())->buscaAtivas();
     }
 
     public function sobre(): void

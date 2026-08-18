@@ -14,7 +14,7 @@
     </ol>
 </nav>
 <div class="card border-0 shadow-sm">
-    <div class="card-header bg-white border-0">
+    <div class="card-header bg-white border-0 d-flex justify-content-end">
         <a href="{{url('admin/categorias/cadastrar')}}" class="btn btn-primary">Cadastrar</a>
     </div>
     <div class="card-body">
@@ -33,14 +33,21 @@
                     <tr>
                         <th>{{categoria.id}}</th>
                         <td>{{categoria.titulo}}</td>
-                        <td>
+                        <td class="text-center">
                             {% if categoria.status == 1 %}
-                            Ativo
+                            <i class="fa-solid fa-circle text-success" tooltip="tooltip" title="Ativo"></i>
                             {% else %}
-                            Inativo
+                            <i class="fa-solid fa-circle text-danger" tooltip="tooltip" title="Inativo"></i>
                             {% endif %}
                         </td>
-                        <td></td>
+                        <td class="text-center">
+                            <a href="{{ url('admin/categorias/editar/'~categoria.id) }}" class="text-primary me-2" title="Editar">
+                                <i class="fa-solid fa-pen"></i>
+                            </a>
+                            <a href="{{ url('admin/categorias/deletar/'~categoria.id) }}" class="text-danger" title="Deletar">
+                                <i class="fa-solid fa-trash"></i>
+                            </a>
+                        </td>
                     </tr>
                     {%endfor%}
                 </tbody>

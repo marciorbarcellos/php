@@ -20,7 +20,7 @@ body {
     left: 0;
     width: 260px;
     height: 100vh;
-    background-color: #2d3653;
+    background-color: #2b3347;
     overflow-y: auto;
     transition: margin-left .2s ease;
     z-index: 1030;

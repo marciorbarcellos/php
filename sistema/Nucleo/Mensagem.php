@@ -7,52 +7,52 @@ namespace sistema\Nucleo;
  * @autor Marcio Barcellos <ceo@php.com.br>
  * @copyright (c) 2026, Php
  */
-class Mensagem
-{
+class Mensagem {
+
     private ?string $texto = null;
     private ?string $css = null;
-    
-    public function __toString()
-    {
+
+    public function __toString() {
         return $this->renderizar();
     }
-    
-    public function sucesso(string $mensagem): Mensagem
-    {
+
+    public function sucesso(string $mensagem): Mensagem {
         $this->css = 'alert alert-success';
         $this->texto = $this->filtrar($mensagem);
         return $this;
     }
-    
-    public function erro(string $mensagem): Mensagem
-    {
+
+    public function erro(string $mensagem): Mensagem {
         $this->css = 'alert alert-danger';
         $this->texto = $this->filtrar($mensagem);
         return $this;
     }
 
-    public function alerta(string $mensagem): Mensagem
-    {
+    public function alerta(string $mensagem): Mensagem {
         $this->css = 'alert alert-warning';
         $this->texto = $this->filtrar($mensagem);
         return $this;
     }
 
-    public function informa(string $mensagem): Mensagem
-    {
+    public function informa(string $mensagem): Mensagem {
         $this->css = 'alert alert-primary';
         $this->texto = $this->filtrar($mensagem);
         return $this;
     }
-    
-    public function renderizar(): string
-    {
-        return "<div class='{$this->css}'>{$this->texto}</div>";
+
+    public function renderizar(): string {
+        return "<div class='{$this->css} alert-dismissible fade show' role='alert'>"
+            . "{$this->texto}"
+            . "<button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Fechar'></button>"
+            . "</div>";
     }
-    
-    private function filtrar(string $mensagem): string
-    {
+
+    private function filtrar(string $mensagem): string {
         return filter_var($mensagem, FILTER_SANITIZE_SPECIAL_CHARS);
     }
-}
 
+    public function flash(): void {
+        (new Sessao())->criar('flash', $this);
+    }
+
+}

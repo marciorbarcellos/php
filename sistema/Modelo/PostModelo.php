@@ -3,32 +3,32 @@
 namespace sistema\Modelo;
 
 use sistema\Nucleo\Conexao;
+use sistema\Nucleo\Modelo;
 
 /**
  * Description of PostModelo
  *
  * @author conryr
  */
-class PostModelo {
+class PostModelo extends Modelo
+{
+    
+    const TABELA = 'posts';
 
-    public function busca(?string $termo = null): array
+    public function __construct()
     {
-        $termo = ($termo ? "WHERE {$termo}" : '' );
-        $query = "SELECT * FROM posts ORDER BY id DESC ";
-        $stmt = Conexao::getInstancia()->query($query);
-        $resultado = $stmt->fetchAll();
-        return $resultado;
+        parent::__construct('posts');
     }
 
     public function buscaPorId(int $id): bool|object {
-        $query = "SELECT * FROM posts WHERE id = {$id} ";
+        $query = "SELECT * FROM ". self::TABELA." WHERE id = {$id} ";
         $stmt = Conexao::getInstancia()->query($query);
         $resultado = $stmt->fetch();
         return $resultado;
     }
 
     public function cadastrar(array $dados): bool {
-        $query = "INSERT INTO posts (categoria_id, titulo, texto, status) VALUES (:categoria_id, :titulo, :texto, :status)";
+        $query = "INSERT INTO ". self::TABELA." (categoria_id, titulo, texto, status) VALUES (:categoria_id, :titulo, :texto, :status)";
         $stmt = Conexao::getInstancia()->prepare($query);
         $stmt->bindValue(':categoria_id', $dados['categoria_id']);
         $stmt->bindValue(':titulo', $dados['titulo']);
@@ -38,7 +38,7 @@ class PostModelo {
     }
 
     public function pesquisa(string $busca): array {
-        $query = "SELECT * FROM posts WHERE titulo LIKE :busca1 OR texto LIKE :busca2 ORDER BY id DESC ";
+        $query = "SELECT * FROM ". self::TABELA." WHERE titulo LIKE :busca1 OR texto LIKE :busca2 ORDER BY id DESC ";
         $stmt = Conexao::getInstancia()->prepare($query);
         $termo = '%' . $busca . '%';
         $stmt->bindValue(':busca1', $termo);
@@ -49,19 +49,19 @@ class PostModelo {
     }
 
     public function armazenar(array $dados): void {
-        $query = "INSERT INTO posts (categoria_id, `titulo`, `texto`, `status`) VALUES (:categoria_id, :titulo, :texto, :status)";
+        $query = "INSERT INTO ". self::TABELA." (categoria_id, `titulo`, `texto`, `status`) VALUES (:categoria_id, :titulo, :texto, :status)";
         $stmt = Conexao::getInstancia()->prepare($query);
         $stmt->execute($dados);
     }
 
     public function atualizar(array $dados, int $id): void {
-        $query = "UPDATE posts SET categoria_id = :categoria_id, titulo = :titulo, texto = :texto, status = :status WHERE id = {$id} ";
+        $query = "UPDATE ". self::TABELA." SET categoria_id = :categoria_id, titulo = :titulo, texto = :texto, status = :status WHERE id = {$id} ";
         $stmt = Conexao::getInstancia()->prepare($query);
         $stmt->execute($dados);
     }
 
     public function deletar(int $id): void {
-        $query = "DELETE FROM posts WHERE id = {$id} ";
+        $query = "DELETE FROM ". self::TABELA." WHERE id = {$id} ";
         $stmt = Conexao::getInstancia()->prepare($query);
         $stmt->execute();
     }
@@ -69,7 +69,7 @@ class PostModelo {
     public function total(?string $termo = null):int {
         $termo = ($termo ? "WHERE {$termo}" : '' );
         
-        $query = "SELECT * FROM posts {$termo}";
+        $query = "SELECT * FROM ". self::TABELA." {$termo}";
         $stmt = Conexao::getInstancia()->prepare($query);
         $stmt->execute();
         

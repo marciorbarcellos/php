@@ -6,11 +6,7 @@
 //include './sistema/Nucleo/Controlador.php';
 require 'vendor/autoload.php';
 
-//require 'rotas.php';
-
-$session = new \sistema\Nucleo\Sessao();
-
-$sessao->criar('usuario', ['id' => 10, 'nome' => 'Marcio Barcellos']);
+require 'rotas.php';
 
 
 
@@ -219,5 +215,4 @@ $sessao->criar('usuario', ['id' => 10, 'nome' => 'Marcio Barcellos']);
 
 //echo $valor ? $valor 0;
 //echo $valor ?: 0;
-
 

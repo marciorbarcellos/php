@@ -16,7 +16,7 @@ class AdminPosts extends AdminControlador {
         $post = new PostModelo();
         
         echo $this->template->renderizar('posts/listar.html', [
-            'posts' => $post->busca(),
+            'posts' => $post->busca()->ordem('status ASC, id DESC')->resultado(true),
             'total' => [
                 'total' => $post->total(),
                 'ativo' => $post->total('status = 1'),
@@ -29,6 +29,7 @@ class AdminPosts extends AdminControlador {
         $dados = filter_input_array(INPUT_POST, FILTER_DEFAULT);
         if (!empty($dados)) {
             (new PostModelo())->armazenar($dados);
+            $this->mensagem->sucesso('Post cadastrado com sucesso')->flash();
             Helpers::redirecionar('admin/posts/listar');
         }
 
@@ -44,6 +45,7 @@ class AdminPosts extends AdminControlador {
         $dados = filter_input_array(INPUT_POST, FILTER_DEFAULT);
         if (!empty($dados)) {
             (new PostModelo())->atualizar($dados, $id);
+            $this->mensagem->sucesso('Post editado com sucesso')->flash();
             Helpers::redirecionar('admin/posts/listar');
         }
 
@@ -55,6 +57,7 @@ class AdminPosts extends AdminControlador {
     
     public function deletar(int $id): void {
         (new PostModelo())->deletar($id);
+        $this->mensagem->sucesso('Post deletado com sucesso')->flash();
         Helpers::redirecionar('admin/posts/listar');
     }
 

@@ -10,7 +10,7 @@
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.2.0/css/all.css">
         <link rel="stylesheet" href="{{ url('templates/assets/css/estilos.css') }}">
 
-        <link rel="stylesheet" href="{{ url('templates/admin/assets/css/admin.css') }}">
+        <link rel="stylesheet" href="{{ url('templates/admin/assets/css/admin.css') }}?v={{ 'now'|date('YmdHis') }}">
         <!-- -->
         <link rel="shortcut icon" href="{{ url('templates/admin/assets/img/LogoPHP.png') }}" />
     </head>
@@ -19,6 +19,6 @@
         <script src="{{ url('templates/assets/vendor/jquery/jquery.min.js') }}"></script>
         <script src="{{ url('templates/assets/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
         <script src="{{ url('templates/assets/js/scripts.js') }}?v={{ 'now'|date('YmdHis') }}"></script>
-        <script src="{{ url('templates/admin/assets/js/admin.js') }}"></script>
+        <script src="{{ url('templates/admin/assets/js/admin.js') }}?v={{ 'now'|date('YmdHis') }}"></script>
     </body>
 </html>

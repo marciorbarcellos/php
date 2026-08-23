@@ -17,10 +17,10 @@ class SiteControlador extends Controlador
 
     public function index(): void
     {
-        $posts = (new PostModelo())->busca(null, 'titulo ASC');
+        $posts = (new PostModelo())->busca("status = 1");
 
         echo $this->template->renderizar('index.html', [
-            'posts' => $posts,
+            'posts' => $posts->resultado(true),
             'categorias' => $this->categorias(),
         ]);
     }
@@ -29,7 +29,7 @@ class SiteControlador extends Controlador
     {
         $busca = filter_input(INPUT_POST, 'busca', FILTER_DEFAULT);
         if (isset($busca)) {
-            $posts = (new PostModelo())->pesquisa($busca);
+            $posts = (new PostModelo())->busca("status = 1 AND titulo LIKE '%{$busca}%'")->resultado(true);
 
             if (empty($posts)) {
                 echo "<div class='w-100 p-3 rounded' style='background-color:#fff3cd; color:#000;'>Nenhum Resultado encontrado</div>";

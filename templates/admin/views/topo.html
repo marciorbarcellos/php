@@ -1,17 +1,22 @@
 <header class="topbar d-flex align-items-center justify-content-between">
-    <label for="menu" class="menu-toggle" aria-label="Abrir/fechar menu">
-        <i class="fa-solid fa-bars"></i>
-    </label>
+    <div class="d-flex align-items-center gap-3">
+        <label for="menu" class="menu-toggle" aria-label="Abrir/fechar menu">
+            <i class="fa-solid fa-bars"></i>
+        </label>
+        <a href="{{ url() }}" class="menu-toggle" title="Ir para o site">
+            <i class="fa-solid fa-house"></i>
+        </a>
+    </div>
 
     <div class="dropdown">
         <a href="#" class="user-dropdown dropdown-toggle text-decoration-none" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             <i class="fa-solid fa-circle-user"></i>
-            Marcio Barcellos
+            {{usuario().nome}}
         </a>
         <ul class="dropdown-menu dropdown-menu-end">
-            <li><a class="dropdown-item" href="#">Meu perfil</a></li>
+            <li><a class="dropdown-item" href="#">Perfil</a></li>
             <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="{{ url() }}">Sair</a></li>
+            <li><a class="dropdown-item" href="{{ url('admin/sair') }}">Sair</a></li>
         </ul>
     </div>
 </header>

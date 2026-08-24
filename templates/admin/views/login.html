@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block corpo %}
+
+<div class="login-wrapper d-flex align-items-center justify-content-center">
+    <div class="login-card border rounded p-4 bg-white">
+        <h3 class="text-center mb-2">Painel Administrativo</h3>
+        <p class="text-center text-muted mb-4">Informe seu login e senha para entrar no sistema.</p>
+        {{ flash() }}
+        <form method="post" action="{{ url('admin/login') }}" method="post">
+            <div class="mb-3">
+                <input type="email" name="email" class="form-control" placeholder="E-mail" required>
+            </div>
+            <div class="mb-3">
+                <input type="password" name="senha" class="form-control" placeholder="Senha" required>
+            </div>
+            <button type="submit" class="btn btn-entrar w-100">Entrar</button>
+            <div class="mb-3">
+                <p class="text-center text-muted texto-rodape-login">@ 2026 Unset</p>
+            </div>
+        </form>
+    </div>
+</div>
+
+{% endblock%}

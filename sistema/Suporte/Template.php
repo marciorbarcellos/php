@@ -3,6 +3,7 @@
 namespace sistema\Suporte;
 
 use sistema\Nucleo\Helpers;
+use sistema\Controlador\UsuarioControlador;
 
 class Template {
 
@@ -15,7 +16,7 @@ class Template {
         $this->helpers();
     }
 
-    public function renderizar(string $view, array $dados) {
+    public function renderizar(string $view, array $dados = []) {
         return $this->twig->render($view, $dados);
     }
 
@@ -35,6 +36,14 @@ class Template {
             ),
             $this->twig->addfunction(new \Twig\TwigFunction('flash', function () {
                                 return Helpers::flash();
+                            })
+            ),
+            $this->twig->addfunction(new \Twig\TwigFunction('usuario', function () {
+                                return UsuarioControlador::usuario();
+                            })
+            ),
+            $this->twig->addfunction(new \Twig\TwigFunction('contarTempo', function (string $data) {
+                                return Helpers::contarTempo($data);
                             })
             ),
         ];

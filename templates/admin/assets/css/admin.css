@@ -140,3 +140,84 @@ body {
     padding: 1rem 1.5rem;
     border-top: 1px solid #e9ecef;
 }
+
+/* ---------- tela de login ---------- */
+.login-wrapper {
+    min-height: 100vh;
+    padding: 1rem;
+}
+
+.login-card {
+    width: 100%;
+    max-width: 360px;
+    border: 1px solid #dee2e6;
+}
+
+.btn-entrar {
+    background-color: #000;
+    border: 1px solid #000;
+    color: #fff;
+}
+
+.btn-entrar:hover,
+.btn-entrar:focus {
+    background-color: #0d6efd;
+    border-color: #0d6efd;
+    color: #fff;
+}
+
+.texto-rodape-login {
+    padding-top: 40px;
+}
+
+/* ---------- dashboard ---------- */
+.dashboard-number {
+    font-size: 2.5rem;
+    font-weight: 700;
+    line-height: 1.2;
+    margin: .5rem 0;
+}
+
+.pill-ativo,
+.pill-inativo {
+    display: inline-block;
+    padding: .15rem .65rem;
+    border-radius: 50rem;
+    font-size: .75rem;
+    font-weight: 600;
+}
+
+.pill-ativo {
+    background-color: #d1e7dd;
+    color: #146c43;
+}
+
+.pill-inativo {
+    background-color: #f8d7da;
+    color: #b02a37;
+}
+
+.btn-circle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    background-color: #212529;
+    color: #fff;
+    text-decoration: none;
+    flex-shrink: 0;
+}
+
+.btn-circle:hover {
+    background-color: #0d6efd;
+    color: #fff;
+}
+
+.alerta-vazio {
+    background-color: #fff3cd;
+    color: #664d03;
+    border-radius: .5rem;
+    padding: 1rem 1.25rem;
+}

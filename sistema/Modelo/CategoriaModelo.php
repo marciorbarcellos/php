@@ -25,6 +25,13 @@ class CategoriaModelo {
         return $resultado;
     }
 
+    public function buscaRecentes(int $limite = 5): array {
+        $query = "SELECT * FROM categorias ORDER BY id DESC LIMIT {$limite}";
+        $stmt = Conexao::getInstancia()->query($query);
+        $resultado = $stmt->fetchAll();
+        return $resultado;
+    }
+
     public function buscaPorId(int $id): bool|object {
         $query = "SELECT * FROM categorias WHERE id = {$id} ";
         $stmt = Conexao::getInstancia()->query($query);
